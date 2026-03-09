@@ -1,0 +1,64 @@
+<form class="auth-box" [formGroup]="registerForm" (ngSubmit)="submit()">
+
+  <h2>Personal Details</h2>
+
+  <input type="text" placeholder="Full Name" formControlName="fullName">
+
+  <select formControlName="gender">
+    <option value="">Select Gender</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+    <option>Prefer not to say</option>
+  </select>
+
+  <input type="text" placeholder="Aadhar Number (12 digits)"
+         maxlength="12" formControlName="aadhar">
+
+  <h2>Family & Contact Info</h2>
+
+  <input type="text" placeholder="Father's Name" formControlName="fatherName">
+  <input type="text" placeholder="Mother's Name" formControlName="motherName">
+
+  <input type="tel" placeholder="Phone Number" formControlName="phone">
+  <input type="tel" placeholder="Parent/Guardian Phone" formControlName="parentPhone">
+  <input type="email" placeholder="Email Address" formControlName="email">
+
+  <h2>Address</h2>
+
+  <textarea placeholder="Current Address"
+            formControlName="currentAddress"></textarea>
+
+  <label>
+    <input type="checkbox" formControlName="sameAddress"
+           (change)="copyAddress($event)">
+    Same as Current Address
+  </label>
+
+  <textarea placeholder="Permanent Address"
+            formControlName="permanentAddress"></textarea>
+
+  <input type="text" placeholder="Pincode"
+         maxlength="6" formControlName="pincode">
+
+  <h2>Uploads</h2>
+
+  <label>Aadhar Upload (PDF / JPG / PNG)</label>
+  <input type="file" accept=".pdf,.jpg,.png">
+
+  <label>Profile Photo (Optional)</label>
+  <input type="file" accept=".jpg,.png">
+
+  <label class="terms">
+    <input type="checkbox" formControlName="terms">
+    I agree to Terms & Conditions
+  </label>
+
+  <button type="submit">Register</button>
+
+  <p>
+    Already have an account?
+    <a routerLink="/login">Login</a>
+  </p>
+
+</form>
