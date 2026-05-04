@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout(~{::div})}">
+<body>
+    <div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center mb-4">
+                    <a th:href="@{/tasks}" class="btn btn-sm btn-outline-secondary rounded-circle me-3" style="width: 38px; height: 38px; padding-top: 6px;">
+                        <i class="bi bi-arrow-left"></i>
+                    </a>
+                    <div>
+                        <h2 class="fw-bold text-dark mb-1" th:text="${task.id == null ? 'Assign New Task' : 'Edit Task'}">Assign Task</h2>
+                        <p class="text-muted mb-0">Specify duty details and allocate to a faculty member.</p>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4 p-md-5">
+                        <form th:action="@{/tasks}" th:object="${task}" method="post" class="needs-validation">
+                            <input type="hidden" th:field="*{id}">
+                            
+                            <div class="row g-4">
+                                <div class="col-md-12">
+                                    <label for="title" class="form-label fw-semibold">Task Title</label>
+                                    <input type="text" class="form-control" id="title" th:field="*{title}" placeholder="e.g. End Semester Exam Invigilation" required>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <label for="description" class="form-label fw-semibold">Description</label>
+                                    <textarea class="form-control" id="description" th:field="*{description}" rows="3" placeholder="Provide detailed instructions..." required></textarea>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="taskType" class="form-label fw-semibold">Task Category</label>
+                                    <select class="form-select" id="taskType" th:field="*{taskType}" required>
+                                        <option value="" disabled selected>Select Category...</option>
+                                        <option value="Exam Duty">Exam Duty</option>
+                                        <option value="Project Guide">Project Guide Allocation</option>
+                                        <option value="Documentation">Documentation Work</option>
+                                        <option value="Event Coordination">Event Coordination</option>
+                                        <option value="Report Submission">Report Submission</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="employee" class="form-label fw-semibold">Assign To (Faculty)</label>
+                                    <select class="form-select" id="employee" th:field="*{employee}" required>
+                                        <option value="" disabled selected>Select Faculty...</option>
+                                        <option th:each="emp : ${employees}"
+                                                th:value="${emp.id}"
+                                                th:text="${emp.name} + ' (' + ${emp.department} + ')'"></option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="dueDate" class="form-label fw-semibold">Due Date</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0"><i class="bi bi-calendar-event text-muted"></i></span>
+                                        <input type="date" class="form-control border-start-0 ps-0" id="dueDate" th:field="*{dueDate}" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="status" class="form-label fw-semibold">Current Status</label>
+                                    <select class="form-select" id="status" th:field="*{status}" required>
+                                        <option value="Pending" selected>Pending</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <hr class="my-4 text-muted opacity-25">
+
+                            <div class="d-flex justify-content-end gap-3 mt-4">
+                                <a th:href="@{/tasks}" class="btn btn-light rounded-pill px-4 hover-lift">Cancel</a>
+                                <button type="submit" class="btn btn-warning text-dark fw-medium rounded-pill px-5 shadow-sm hover-lift">
+                                    <i class="bi bi-clipboard-check me-2"></i><span th:text="${task.id == null ? 'Assign Task' : 'Update Task'}">Save</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

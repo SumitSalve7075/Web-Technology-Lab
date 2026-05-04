@@ -1,0 +1,136 @@
+/* Custom Styles for TaskFlow */
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    background-color: #f8fafc !important;
+}
+
+/* Glassmorphism Navbar */
+.glassmorphism {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Utilities */
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Cards */
+.stat-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tables */
+.custom-table th {
+    font-weight: 600;
+    color: #64748b;
+    border-bottom-width: 1px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.custom-table td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    vertical-align: middle;
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.avatar-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+/* Badges */
+.badge {
+    font-weight: 600;
+}
+
+/* Forms */
+.form-control, .form-select {
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    border-color: #e2e8f0;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.1);
+    border-color: #93c5fd;
+}
+
+.input-group-text {
+    border-color: #e2e8f0;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.text-primary {
+    color: #2563eb !important;
+}
+
+.bg-primary-subtle {
+    background-color: #eff6ff !important;
+}
+
+.bg-secondary-subtle {
+    background-color: #f1f5f9 !important;
+}
